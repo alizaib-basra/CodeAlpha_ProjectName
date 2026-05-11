@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <i class="fa-solid fa-robot"></i>
+      <span>FAQ Assistant</span>
+    </div>
+    <p class="sidebar-sub">Ask me anything! I'll find the best answer from our FAQ database.</p>
+
+    <div class="faq-list-wrap">
+      <p class="faq-list-title"><i class="fa-solid fa-list"></i> Browse FAQs</p>
+      <div class="faq-list" id="faqList">
+        <p class="loading-text">Loading FAQs...</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Chat area -->
+  <main class="chat-area">
+
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="chat-header-left">
+        <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <p class="bot-name">FAQ Assistant</p>
+          <p class="bot-status"><span class="status-dot"></span> Online</p>
+        </div>
+      </div>
+      <button class="clear-btn" id="clearBtn" title="Clear chat">
+        <i class="fa-solid fa-trash"></i> Clear
+      </button>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages" id="messages">
+      <div class="message bot">
+        <div class="avatar-sm"><i class="fa-solid fa-robot"></i></div>
+        <div class="bubble">
+          👋 Hi! I'm your FAQ Assistant. Ask me any question and I'll find the best answer for you!
+          <br/><br/>
+          Try asking: <em>"How do I reset my password?"</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="input-area">
+      <div class="input-wrap">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your question here..."
+          autocomplete="off"
+        />
+        <button id="sendBtn">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+      <p class="input-hint">Press Enter or click Send</p>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
