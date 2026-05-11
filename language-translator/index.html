@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Language Translator</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <i class="fa-solid fa-language"></i>
+          <span>LinguaTranslate</span>
+        </div>
+        <nav class="tabs">
+          <button class="tab active" data-tab="translate">Translate</button>
+          <button class="tab" data-tab="history">History</button>
+          <button class="tab" data-tab="favorites">Favorites</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- ───── TRANSLATE TAB ───── -->
+      <section class="panel-wrap active" id="tab-translate">
+
+        <!-- Language Bar -->
+        <div class="lang-bar">
+          <div class="lang-select-wrap">
+            <i class="fa-solid fa-globe lang-icon"></i>
+            <select id="sourceLang">
+              <option value="auto">Detect Language</option>
+              <option value="English">English</option>
+              <option value="Urdu">Urdu</option>
+              <option value="Arabic">Arabic</option>
+              <option value="French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="German">German</option>
+              <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+              <option value="Chinese (Traditional)">Chinese (Traditional)</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Korean">Korean</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="Russian">Russian</option>
+              <option value="Italian">Italian</option>
+              <option value="Dutch">Dutch</option>
+              <option value="Turkish">Turkish</option>
+              <option value="Polish">Polish</option>
+              <option value="Swedish">Swedish</option>
+              <option value="Greek">Greek</option>
+              <option value="Hebrew">Hebrew</option>
+              <option value="Persian">Persian</option>
+              <option value="Indonesian">Indonesian</option>
+              <option value="Thai">Thai</option>
+              <option value="Vietnamese">Vietnamese</option>
+              <option value="Bengali">Bengali</option>
+              <option value="Punjabi">Punjabi</option>
+            </select>
+          </div>
+
+          <button class="swap-btn" id="swapBtn" title="Swap Languages">
+            <i class="fa-solid fa-right-left"></i>
+          </button>
+
+          <div class="lang-select-wrap">
+            <i class="fa-solid fa-globe lang-icon"></i>
+            <select id="targetLang">
+              <option value="Urdu">Urdu</option>
+              <option value="English">English</option>
+              <option value="Arabic">Arabic</option>
+              <option value="French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="German">German</option>
+              <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+              <option value="Chinese (Traditional)">Chinese (Traditional)</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Korean">Korean</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="Russian">Russian</option>
+              <option value="Italian">Italian</option>
+              <option value="Dutch">Dutch</option>
+              <option value="Turkish">Turkish</option>
+              <option value="Polish">Polish</option>
+              <option value="Swedish">Swedish</option>
+              <option value="Greek">Greek</option>
+              <option value="Hebrew">Hebrew</option>
+              <option value="Persian">Persian</option>
+              <option value="Indonesian">Indonesian</option>
+              <option value="Thai">Thai</option>
+              <option value="Vietnamese">Vietnamese</option>
+              <option value="Bengali">Bengali</option>
+              <option value="Punjabi">Punjabi</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Panels -->
+        <div class="panels">
+
+          <!-- Source -->
+          <div class="panel" id="sourcePanel">
+            <div class="panel-top">
+              <span class="panel-label">Source Text</span>
+              <span class="detect-badge" id="detectBadge"></span>
+            </div>
+            <textarea
+              id="sourceText"
+              placeholder="Type or paste text here..."
+              maxlength="2000"
+              spellcheck="true"
+            ></textarea>
+            <div class="panel-footer">
+              <div class="stats">
+                <span id="charCount">0 / 2000</span>
+                <span class="dot">·</span>
+                <span id="wordCount">0 words</span>
+              </div>
+              <div class="footer-btns">
+                <button class="icon-btn" id="clearBtn" title="Clear text">
+                  <i class="fa-solid fa-xmark"></i> Clear
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output -->
+          <div class="panel" id="outputPanel">
+            <div class="panel-top">
+              <span class="panel-label">Translation</span>
+            </div>
+            <div class="output-box" id="outputText">
+              <span class="placeholder-text">Translation appears here...</span>
+            </div>
+            <div class="panel-footer">
+              <div class="stats">
+                <span id="transWordCount"></span>
+              </div>
+              <div class="footer-btns">
+                <button class="icon-btn" id="favBtn" title="Save to Favorites">
+                  <i class="fa-regular fa-star"></i>
+                </button>
+                <button class="icon-btn" id="copyBtn" title="Copy Translation">
+                  <i class="fa-regular fa-copy"></i> Copy
+                </button>
+                <button class="icon-btn" id="speakBtn" title="Text to Speech">
+                  <i class="fa-solid fa-volume-high"></i> Listen
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.panels -->
+
+        <button class="translate-btn" id="translateBtn">
+          <i class="fa-solid fa-language"></i>
+          <span>Translate</span>
+        </button>
+        <div class="error-msg" id="errorMsg"></div>
+        <p class="hint-text">Tip: Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to translate</p>
+
+      </section>
+
+      <!-- ───── HISTORY TAB ───── -->
+      <section class="panel-wrap" id="tab-history">
+        <div class="list-header">
+          <span>Recent Translations</span>
+          <button class="text-btn" id="clearHistory">Clear All</button>
+        </div>
+        <div class="card-list" id="historyList">
+          <div class="empty-state">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <p>No translations yet</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───── FAVORITES TAB ───── -->
+      <section class="panel-wrap" id="tab-favorites">
+        <div class="list-header">
+          <span>Saved Translations</span>
+          <button class="text-btn" id="clearFavs">Clear All</button>
+        </div>
+        <div class="card-list" id="favList">
+          <div class="empty-state">
+            <i class="fa-regular fa-star"></i>
+            <p>No saved translations yet</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>Built with ❤️ · Powered by Alizaib-Basra· <a href="https://github.com" target="_blank">View on GitHub</a></p>
+    </footer>
+
+  </div><!-- /.app-wrapper -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>
